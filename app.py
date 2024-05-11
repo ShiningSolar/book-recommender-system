@@ -29,7 +29,7 @@ def fecth_poster(suggestion):
 def recommend_books(book_name):
     book_list = []
     book_id = np.where(book_pivot.index == book_name)[0][0]
-    distance, suggestion = model.kneighbors(book_pivot.iloc[book_id,:].values.reshape(1,-1), n_neighbors = 6)
+    distance, suggestion = model.kneighbors(book_pivot.iloc[book_id,:].values.reshape(1,-1), n_neighbors = 11)
 
     poster_url = fecth_poster(suggestion)
 
@@ -47,7 +47,7 @@ selected_books = st.selectbox(
 
 if st.button('Show Recommendation'):
     recommended_books, poster_url = recommend_books(selected_books)
-    col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4, col5, col6, col7, col8, col9, col10 = st.columns(10)
 
     with col1:
         st.text(recommended_books[1])
@@ -68,3 +68,23 @@ if st.button('Show Recommendation'):
     with col5:
         st.text(recommended_books[5])
         st.image(poster_url[5]) 
+
+    with col6:
+        st.text(recommended_books[6])
+        st.image(poster_url[6])
+
+    with col7:
+        st.text(recommended_books[7])
+        st.image(poster_url[7])
+        
+    with col8:
+        st.text(recommended_books[8])
+        st.image(poster_url[8]) 
+        
+    with col9:
+        st.text(recommended_books[9])
+        st.image(poster_url[9]) 
+
+    with col10:
+        st.text(recommended_books[10])
+        st.image(poster_url[10]) 
